@@ -7,7 +7,7 @@ void menue(BlockChain* blockchain){
     while(1){
         scanf("%s", input);
         if(strcmp(input, "display")==0){
-        printBlockchainInfo(blockchain);
+        printBlockchainInfo();
         }
         if(strcmp(input, "exit")==0){
         return;

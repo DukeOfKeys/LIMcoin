@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F49B50BB2AE547DB00B55538 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = F49B50BA2AE547DB00B55538 /* main.c */; };
+		F49B50D02AE5481800B55538 /* Blockchain.c in Sources */ = {isa = PBXBuildFile; fileRef = F49B50C12AE5481800B55538 /* Blockchain.c */; };
+		F49B50D12AE5481800B55538 /* Utils.c in Sources */ = {isa = PBXBuildFile; fileRef = F49B50C72AE5481800B55538 /* Utils.c */; };
+		F49B50D22AE5481800B55538 /* sha-256.c in Sources */ = {isa = PBXBuildFile; fileRef = F49B50C82AE5481800B55538 /* sha-256.c */; };
+		F49B50D32AE5481800B55538 /* Transaction.c in Sources */ = {isa = PBXBuildFile; fileRef = F49B50CB2AE5481800B55538 /* Transaction.c */; };
+		F49B50D42AE5481800B55538 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = F49B50CE2AE5481800B55538 /* main.c */; };
+		F49B50D52AE5481800B55538 /* menue.c in Sources */ = {isa = PBXBuildFile; fileRef = F49B50CF2AE5481800B55538 /* menue.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +28,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F45B449B2AE54CBB0013F29D /* PendingTransaction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PendingTransaction.h; sourceTree = "<group>"; };
 		F49B50B72AE547DB00B55538 /* LIMcoin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LIMcoin; sourceTree = BUILT_PRODUCTS_DIR; };
-		F49B50BA2AE547DB00B55538 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		F49B50C12AE5481800B55538 /* Blockchain.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Blockchain.c; sourceTree = "<group>"; };
+		F49B50C22AE5481800B55538 /* Blockchain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Blockchain.h; sourceTree = "<group>"; };
+		F49B50C32AE5481800B55538 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		F49B50C42AE5481800B55538 /* blocks */ = {isa = PBXFileReference; lastKnownFileType = file; path = blocks; sourceTree = "<group>"; };
+		F49B50C52AE5481800B55538 /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
+		F49B50C62AE5481800B55538 /* menue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = menue.h; sourceTree = "<group>"; };
+		F49B50C72AE5481800B55538 /* Utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Utils.c; sourceTree = "<group>"; };
+		F49B50C82AE5481800B55538 /* sha-256.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "sha-256.c"; sourceTree = "<group>"; };
+		F49B50C92AE5481800B55538 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F49B50CA2AE5481800B55538 /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
+		F49B50CB2AE5481800B55538 /* Transaction.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Transaction.c; sourceTree = "<group>"; };
+		F49B50CC2AE5481800B55538 /* main.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = main.dSYM; sourceTree = "<group>"; };
+		F49B50CE2AE5481800B55538 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		F49B50CF2AE5481800B55538 /* menue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = menue.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +76,21 @@
 		F49B50B92AE547DB00B55538 /* LIMcoin */ = {
 			isa = PBXGroup;
 			children = (
-				F49B50BA2AE547DB00B55538 /* main.c */,
+				F49B50C52AE5481800B55538 /* Block.h */,
+				F49B50C12AE5481800B55538 /* Blockchain.c */,
+				F49B50C22AE5481800B55538 /* Blockchain.h */,
+				F49B50C42AE5481800B55538 /* blocks */,
+				F49B50CE2AE5481800B55538 /* main.c */,
+				F49B50CC2AE5481800B55538 /* main.dSYM */,
+				F49B50CF2AE5481800B55538 /* menue.c */,
+				F49B50C62AE5481800B55538 /* menue.h */,
+				F49B50C92AE5481800B55538 /* README.md */,
+				F49B50C82AE5481800B55538 /* sha-256.c */,
+				F49B50CB2AE5481800B55538 /* Transaction.c */,
+				F49B50CA2AE5481800B55538 /* Transaction.h */,
+				F49B50C72AE5481800B55538 /* Utils.c */,
+				F49B50C32AE5481800B55538 /* Utils.h */,
+				F45B449B2AE54CBB0013F29D /* PendingTransaction.h */,
 			);
 			path = LIMcoin;
 			sourceTree = "<group>";
@@ -119,7 +152,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F49B50BB2AE547DB00B55538 /* main.c in Sources */,
+				F49B50D52AE5481800B55538 /* menue.c in Sources */,
+				F49B50D42AE5481800B55538 /* main.c in Sources */,
+				F49B50D32AE5481800B55538 /* Transaction.c in Sources */,
+				F49B50D02AE5481800B55538 /* Blockchain.c in Sources */,
+				F49B50D22AE5481800B55538 /* sha-256.c in Sources */,
+				F49B50D12AE5481800B55538 /* Utils.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

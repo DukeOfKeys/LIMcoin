@@ -7,7 +7,6 @@ int main(int count,char** arcs){
     if(count > 1)
     inputargs(count, arcs, &a);
     printf("%lu\n", sizeof(a.block.transactions));
-    char lol[4040000];
     menue(&a);
     return 0;
 }

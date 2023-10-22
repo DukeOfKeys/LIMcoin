@@ -3,7 +3,7 @@
 #include <string.h>
 #include "Utils.h"
 
-    Block createFirstBlock(){
+Block createFirstBlock(void){
         Block firstBlock;
         firstBlock.timeCreated = time(NULL);
         strcpy(firstBlock.data, "first block");
@@ -47,7 +47,7 @@
         
         while(!feof(blocksFile)){
             Block newBlockV;
-            int result = fread(&newBlockV, sizeof(Block), 1,blocksFile);
+            unsigned long result = fread(&newBlockV, sizeof(Block), 1,blocksFile);
             if(result != 0){
                 (*whereToload).block = newBlockV;
             }
@@ -55,7 +55,7 @@
         return 1;
     }
 
-    void printBlockchainInfo(){
+void printBlockchainInfo(void){
       FILE *blocksFile; 
         if ((blocksFile = fopen("blocks", "rb")) == NULL){
             puts("file Does not exist");
@@ -63,13 +63,13 @@
         }    
         while(!feof(blocksFile)){
             Block newBlockV;
-            int result = fread(&newBlockV, sizeof(Block), 1,blocksFile);
+            unsigned long result = fread(&newBlockV, sizeof(Block), 1,blocksFile);
             if(result != 0){
                         printf("\n %s data:%s\n hash: %s\n nonce: %ld\n", ctime(&(newBlockV.timeCreated)), newBlockV.data, newBlockV.prev_hash, newBlockV.nonce);
             }
         }       
     }
-    void verifyBlockchain(){
+void verifyBlockchain(void){
          FILE *blocksFile; 
         if ((blocksFile = fopen("blocks", "rb")) == NULL){
             puts("file Does not exist");
@@ -77,7 +77,7 @@
         }    
         while(!feof(blocksFile)){
             Block newBlockV;
-            int result = fread(&newBlockV, sizeof(Block), 1,blocksFile);
+            unsigned long result = fread(&newBlockV, sizeof(Block), 1,blocksFile);
             if(result != 0){
                         printf(" %s\n data:%s\n hash: %s\n nonce: %ld\n", ctime(&(newBlockV.timeCreated)), newBlockV.data, newBlockV.prev_hash, newBlockV.nonce);
             }
@@ -91,7 +91,7 @@
         char ctime[20];
         sprintf(ctime, "%ld", (*block).timeCreated);
         strcat(data, ctime);
-        itoc(block->nonce, numberstr);
+        ltoc(block->nonce, numberstr);
         strcat(data, numberstr);
         itoc(nonce, numberstr);
         strcat(data, numberstr);

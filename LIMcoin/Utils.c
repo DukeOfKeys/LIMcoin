@@ -16,6 +16,11 @@ void compare(char a[],char b[])
        i++;  
     }    
 } 
+void ltoc(long num, char* in){
+    char str[(long)((ceil(log10((num != 0) ? num : 1))+1)*sizeof(char))];
+    sprintf(str, "%ld", num);
+    strcpy(in, str);
+}
 int compareZeros(char* str, int num){
     int numberZ = 0;
     for(int counter = 0; counter<num&&counter<strlen(str); counter++){

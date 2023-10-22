@@ -146,7 +146,7 @@ void SHA256Final(SHA256_CTX *ctx, uchar hash[])
 }
 
 char* SHA256(char* data) {
-	int strLen = strlen(data);
+	int strLen =(int) strlen(data);
 	SHA256_CTX ctx;
 	unsigned char hash[32];
 	char* hashStr = malloc(65);
