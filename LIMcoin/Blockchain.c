@@ -5,6 +5,7 @@
 
 Block createFirstBlock(void){
         Block firstBlock;
+        strcpy(firstBlock.prev_hash, "nan");
         firstBlock.timeCreated = time(NULL);
         strcpy(firstBlock.data, "first block");
         firstBlock.nonce = 0;
@@ -12,19 +13,23 @@ Block createFirstBlock(void){
         return firstBlock;
     }
 
-    void newBlock(BlockChain* blockChain, Block* newBlock){
+    void newBlock(BlockChain* blockChain){
+        Block newBlockWithtrans;
+        toArray(&(*blockChain).pendingTransactions, newBlockWithtrans.transactions, 3);
+        strcpy(newBlockWithtrans.data, "transactions");
         long nonce;
         char* hash = mine(&blockChain->block, &nonce);
-        strcpy(newBlock->prev_hash, hash);
-        newBlock->timeCreated = time(NULL);
-        newBlock->nonce = nonce;
+        strcpy(newBlockWithtrans.prev_hash, hash);
+        newBlockWithtrans.timeCreated = time(NULL);
+        newBlockWithtrans.nonce = nonce;
         free(hash);
-        saveBlock(newBlock);
-        blockChain->block = *newBlock;
+        saveBlock(&newBlockWithtrans);
+        blockChain->block = newBlockWithtrans;
     }
     void initBlockchain(BlockChain* value){
         if(loadbloks(value) == 0)
         value->block = createFirstBlock();
+        value->pendingTransactions = NULL;
     }
     void saveBlock(Block* blockToSave){
         FILE *blocksFile; 
@@ -60,30 +65,41 @@ void printBlockchainInfo(void){
         if ((blocksFile = fopen("blocks", "rb")) == NULL){
             puts("file Does not exist");
             return;
-        }    
+        }
         while(!feof(blocksFile)){
             Block newBlockV;
             unsigned long result = fread(&newBlockV, sizeof(Block), 1,blocksFile);
             if(result != 0){
                         printf("\n %s data:%s\n hash: %s\n nonce: %ld\n", ctime(&(newBlockV.timeCreated)), newBlockV.data, newBlockV.prev_hash, newBlockV.nonce);
             }
-        }       
+        }    
     }
-void verifyBlockchain(void){
-         FILE *blocksFile; 
+void balance(char* account){
+         FILE *blocksFile;
         if ((blocksFile = fopen("blocks", "rb")) == NULL){
             puts("file Does not exist");
             return;
-        }    
+        }
+    long balance = 0;
         while(!feof(blocksFile)){
             Block newBlockV;
             unsigned long result = fread(&newBlockV, sizeof(Block), 1,blocksFile);
             if(result != 0){
-                        printf(" %s\n data:%s\n hash: %s\n nonce: %ld\n", ctime(&(newBlockV.timeCreated)), newBlockV.data, newBlockV.prev_hash, newBlockV.nonce);
+                for(int counter = 0; counter < sizeof(newBlockV.transactions)/sizeof(Transaction); counter++)
+                {
+                    if(strcmp(newBlockV.transactions[counter].to, account) == 0){
+                        balance += newBlockV.transactions[counter].ammount;
+                    }
+                    if(strcmp(newBlockV.transactions[counter].from, account) == 0){
+                        balance -= newBlockV.transactions[counter].ammount;
+                    }
+                }
+                
             }
         } 
+        printf("Your balance: %ld\n", balance);
     }
-    void generateHashHeader(Block* block, char* str, int nonce){
+    void generateHashHeader(Block* block, char* str, long nonce){
         char data[1000];
         char numberstr[100];
         strcpy(data,block->prev_hash);
@@ -93,7 +109,9 @@ void verifyBlockchain(void){
         strcat(data, ctime);
         ltoc(block->nonce, numberstr);
         strcat(data, numberstr);
-        itoc(nonce, numberstr);
+        hashOftransactions((*block).transactions, 3, numberstr);
+        strcat(data,numberstr);
+        ltoc(nonce, numberstr);
         strcat(data, numberstr);
         printf("\n %s \n", data);
         generateHash(data, str);
@@ -111,8 +129,3 @@ void verifyBlockchain(void){
         } while( compareZeros(hash, MIN_ZEROS) != 1 );
         return hash;
     }
-        void createBlockFromData(BlockChain* chain, char* str){
-            Block strBlock;
-            strcpy(strBlock.data, str);
-            newBlock(chain, &strBlock);
-        }

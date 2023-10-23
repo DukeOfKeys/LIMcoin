@@ -1,12 +1,14 @@
 #include "Utils.h"
 #include "Blockchain.h"
 #include "menue.h"
+#include "Transaction.h"
 int main(int count,char** arcs){
     struct BlockChain a;
     initBlockchain(&a);
     if(count > 1)
     inputargs(count, arcs, &a);
-    printf("%lu\n", sizeof(a.block.transactions));
+    printBlockchainInfo();
     menue(&a);
     return 0;
 }
+

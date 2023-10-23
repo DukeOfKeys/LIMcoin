@@ -1,1 +1,1 @@
-# c_blockchain
+# LIMcoin

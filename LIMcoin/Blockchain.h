@@ -4,22 +4,19 @@
 #include "Transaction.h"
 #include <stdlib.h>
 #include <stdio.h>
-
+#include "PendingTransaction.h"
 #define MINING_REWOARD 10
 #define MIN_ZEROS 2
-char* SHA256(char* );
 struct BlockChain{
     Block block;
-    Transaction pendingtransactions[1000];
+    PendingTransaction* pendingTransactions;
 };
 typedef struct BlockChain BlockChain;
     /// @brief  adds given block to the end of blockchain
-    void newBlock(BlockChain*, Block*);
+    void newBlock(BlockChain*);
 
 
     void newtransaction(BlockChain*);
-
-
     /// @brief creates Genesis block with hardcoded params 
     /// @return Genesis block
     Block createFirstBlock(void);
@@ -36,10 +33,9 @@ typedef struct BlockChain BlockChain;
     /// @brief prints blockchain
     void printBlockchainInfo(void);
 
-    void generateHashHeader(Block* , char*, int );
+    void generateHashHeader(Block* , char*, long );
     void generateHash(char*, char*);
     char* mine(Block* block, long*);
-    void createBlockFromData(BlockChain*, char*);
-    void verifyBlockchain(void);
+    void balance(char*);
 #endif
 

@@ -1,7 +1,8 @@
 #include "Transaction.h"
-char* hashTransactions(Transaction* transactions){
-    
-//    for(int counter=0; counter< lengthOfarray; counter++){
-//    }
-    return 'q';
-}
+    Transaction createTransaction(char* from, char* to, long amount){
+        Transaction created;
+        strcpy(created.from, from);
+        strcpy(created.to, to);
+        created.ammount = amount;
+        return created;
+    }

@@ -6,8 +6,8 @@
     struct Transaction{
         char from[200];
         char to[200];
-        int ammount;
+        long ammount;
     };
     typedef struct Transaction Transaction;
-    char* hashTransactions(Transaction*);
+    Transaction createTransaction(char*, char*, long);
 #endif
