@@ -1,6 +1,0 @@
-{
-    "files.associations": {
-        "string.h": "c",
-        "opencl-c.h": "c"
-    }
-}
